@@ -3,7 +3,7 @@ import { fetchData } from "./util";
 import { Posts } from "./interface/Posts";
 import "./App.css";
 
-function App() {
+export default function App() {
   const URL = "https://dummyapi.io/data/v1/post?limit=50";
   const APP_ID = "614388656e2fec97b56911c0";
   const [posts, setPosts] = useState<Posts[]>([]);
@@ -14,9 +14,9 @@ function App() {
       setPosts(data.data);
       setFilter(data.data);
     });
-
-    console.log(posts, filter);
   }, []);
+
+  console.log(posts, filter);
 
   return (
     <div>
@@ -24,5 +24,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
