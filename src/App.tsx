@@ -94,7 +94,7 @@ export default function App() {
         </div>
       </Header>
 
-      <PostInfo posts={handleSearch(query)} />
+      <PostInfo data={handleSearch(query)} />
     </div>
   );
 }
