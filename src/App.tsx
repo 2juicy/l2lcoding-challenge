@@ -24,10 +24,10 @@ export default function App() {
   function handleSearch(text?: string) {
     // Guard clause
     if (!text && !likes) return data;
+    // 1st filter by likes
     const filterByLikes = data.filter(post => {
       return post.likes >= likes;
     });
-
     // 2nd Guard Clause because TypeScript is strict
     if (!text) return filterByLikes;
 
@@ -39,7 +39,7 @@ export default function App() {
     // Filtering happens here by checking the variable type then filter accordingly
     return filterByLikes.filter((post: Posts) =>
       // Depending on what is checked we will search by that parameter
-      searchParams.every(param => {
+      searchParams.some(param => {
         // Search by Text, check if typeof is string
         if (typeof post[param] === "string")
           return hasWord(post[param], text.trim());
