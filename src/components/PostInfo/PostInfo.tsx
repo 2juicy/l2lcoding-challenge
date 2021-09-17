@@ -5,26 +5,23 @@ import { useEffect, useState } from "react";
 
 export default function PostInfo({ data }) {
   const [posts, setPosts] = useState<Posts[]>([]);
-  const [opacity, setOpacity] = useState(1);
+  const [display, setDisplay] = useState("block");
   const [loading, setLoading] = useState(false);
 
+  // Lazy loading starts here
   useEffect(() => {
     setPosts(data.slice(0, 10));
   }, [data]);
 
   useEffect(() => {
-    console.log(window.pageYOffset);
-    if (window.pageYOffset < 1) {
-      setOpacity(0);
-    } else if (window.pageYOffset > 1) {
-      setOpacity(1);
-    }
-
+    document.body.clientHeight < window.innerHeight
+      ? setDisplay("none")
+      : setDisplay("block");
     if (posts.length < 50) {
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleLazy);
     }
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    return () => window.removeEventListener("scroll", handleLazy);
+  }, [posts.length]);
 
   useEffect(() => {
     if (!loading) return;
@@ -33,13 +30,12 @@ export default function PostInfo({ data }) {
     setLoading(false);
   }, [loading, data, posts]);
 
-  function handleScroll() {
+  function handleLazy() {
     if (
       window.innerHeight + window.pageYOffset + 100 <
       document.documentElement.offsetHeight
-    ) {
-      return;
-    } else setLoading(true);
+    )
+      setLoading(true);
   }
 
   // If no posts exist we display no results.
@@ -85,12 +81,8 @@ export default function PostInfo({ data }) {
         ))}
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <button
-          style={{ opacity }}
-          onClick={() => window.scrollTo(0, 0)}
-          className="top"
-        >
+      <div style={{ display, textAlign: "center" }}>
+        <button onClick={() => window.scrollTo(0, 0)} className="top">
           <i className="bx bxs-chevrons-up"></i>
         </button>
       </div>
