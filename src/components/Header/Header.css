@@ -1,0 +1,19 @@
+#header-component {
+  height: 48px;
+  background-color: #363c3c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#header-component > a {
+  font-size: 2em;
+  font-weight: bolder;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 auto 0 25px;
+}
