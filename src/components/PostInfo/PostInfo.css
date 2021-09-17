@@ -61,3 +61,38 @@
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+.top {
+  padding: 20px;
+  text-transform: uppercase;
+  color: #000;
+  text-shadow: #c0c0c0 1px 0 5px;
+  background-color: transparent;
+  border: #000 1px solid;
+  border-radius: 5px;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.top:hover {
+  color: #fff;
+}
+
+.top::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #000;
+  z-index: -1;
+  transition: 0.8s;
+  border-radius: 50% 50% 0 0;
+}
+
+.top:hover::before {
+  height: 180%;
+}

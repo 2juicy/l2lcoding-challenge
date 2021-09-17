@@ -59,6 +59,12 @@ export default function App() {
     );
   }
 
+  function clearAll() {
+    setSearchParams([]);
+    setQuery("");
+    setLikes(0);
+  }
+
   return (
     <div>
       <Header>
@@ -92,6 +98,10 @@ export default function App() {
             ))}
           </div>
         </div>
+
+        <button className="clear" onClick={clearAll}>
+          Clear
+        </button>
       </Header>
 
       <PostInfo data={handleSearch(query)} />
