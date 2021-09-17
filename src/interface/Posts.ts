@@ -1,7 +1,14 @@
 export interface Posts {
   id: string;
   image: string;
-  owner: {};
+  likes: number;
+  owner: {
+    firstName: string;
+    id: string;
+    lastName: string;
+    picture: string;
+    title: string;
+  };
   publishDate: string;
   tags: string[];
   text: string;
