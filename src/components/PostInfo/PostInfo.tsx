@@ -14,7 +14,7 @@ export default function PostInfo({ data }) {
   }, [data]);
 
   useEffect(() => {
-    document.body.clientHeight < window.innerHeight
+    document.body.clientHeight - 50 < window.innerHeight
       ? setDisplay("none")
       : setDisplay("block");
     if (posts.length < 50) {
