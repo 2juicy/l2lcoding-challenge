@@ -18,7 +18,6 @@ export default function App() {
   useEffect(() => {
     fetchData(URL, APP_ID).then(data => {
       setData(data.data);
-      console.log(data.data);
     });
   }, []);
 
