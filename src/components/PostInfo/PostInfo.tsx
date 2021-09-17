@@ -1,10 +1,10 @@
 import "./PostInfo.css";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import { Posts } from "../../interface/Posts";
-import Modal from "../Modal/Modal";
 
-export default function PostInfo({ posts }: any) {
-  if (!posts) return <p>Loading...</p>;
+export default function PostInfo({ posts }) {
+  if (!posts.length)
+    return <h2 style={{ textAlign: "center" }}>No results...</h2>;
 
   return (
     <div className="grid-container">
@@ -18,9 +18,6 @@ export default function PostInfo({ posts }: any) {
           </div>
 
           <img className="post-image" src={post.image} alt="post" />
-          <Modal>
-            <img className="modal-image" src={post.image} alt="post" />{" "}
-          </Modal>
 
           <div className="post-info">
             <div className="image-subtext">
@@ -39,6 +36,8 @@ export default function PostInfo({ posts }: any) {
                 ))}
               </div>
             )}
+
+            <p>{post.text}</p>
           </div>
         </div>
       ))}
