@@ -6,7 +6,7 @@ interface PropTypes {
   setSlider: (arg0) => void;
 }
 
-export default function Range({ slider, setSlider }: PropTypes) {
+function Range({ slider, setSlider }: PropTypes) {
   const [show, setShow] = useState("");
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -33,3 +33,5 @@ export default function Range({ slider, setSlider }: PropTypes) {
     </div>
   );
 }
+
+export default React.memo(Range);
