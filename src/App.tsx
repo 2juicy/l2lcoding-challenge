@@ -13,8 +13,8 @@ export default function App() {
   const [data, setData] = useState<Posts[]>([]);
   const [query, setQuery] = useState("");
   const filters = ["owner", "text", "tags"];
-  const [likes, setLikes] = useState(0);
   const [searchParams, setSearchParams] = useState(["owner", "text", "tags"]);
+  const [likes, setLikes] = useState(0);
   const [tags, setTags] = useState([]);
   const [tagsParam, setTagsParam] = useState<string[]>([]);
   const [owners, setOwners] = useState([]);
@@ -100,6 +100,7 @@ export default function App() {
             Clear
           </button>
           <input
+            autoFocus
             className="searchbar"
             type="search"
             value={query}
@@ -126,7 +127,9 @@ export default function App() {
               </label>
             ))}
           </div>
+        </div>
 
+        <div>
           <Dropmenu
             label="owners"
             params={ownersParam}
