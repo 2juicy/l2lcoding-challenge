@@ -60,7 +60,7 @@ export default function App() {
     });
 
     // Guard clause for the search
-    if (!text) return filterByLikes;
+    if (!text || !searchParams?.length) return filterByLikes;
 
     // Filtering happens here by checking the variable type then filter accordingly
     return filterByLikes.filter((post: Posts) =>
