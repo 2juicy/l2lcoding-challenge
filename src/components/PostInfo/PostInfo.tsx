@@ -6,7 +6,7 @@ import React from "react";
 
 function PostInfo({ data }) {
   const [posts, setPosts] = useState<Posts[]>([]);
-  const [display, setDisplay] = useState("block");
+  const [display, setDisplay] = useState("none");
   const [loading, setLoading] = useState(false);
 
   // Lazy loading starts here

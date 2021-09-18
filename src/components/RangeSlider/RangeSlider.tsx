@@ -23,12 +23,12 @@ function Range({ slider, setSlider }: PropTypes) {
         type="range"
         name="likes"
         min="0"
-        max="1000"
+        max="500"
         value={slider}
         onInput={handleInput}
       />
-      <output className={`bubble ${show}`} style={{ left: slider / 10 + "%" }}>
-        {slider} <i className="bx bxs-like"></i>
+      <output className={`bubble ${show}`} style={{ left: slider / 5 + "%" }}>
+        {slider}
       </output>
     </div>
   );
