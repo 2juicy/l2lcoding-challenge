@@ -44,18 +44,15 @@ export default function PostInfo({ data }) {
 
   return (
     <>
-      <div className="grid-container">
-        {posts.map((post: Posts, index: number) => (
-          <div className="flex-container" key={post.id}>
+      {posts.map((post: Posts, index: number) => (
+        <div className="flex-container" key={post.id}>
+          <div className="post-container">
             <div className="owner">
               <Thumbnail thumbnail={post.owner.picture} />
               <h2>
                 {post.owner.firstName} {post.owner.lastName}
               </h2>
             </div>
-
-            <img className="post-image" src={post.image} alt="post" />
-
             <div className="post-info">
               <div className="image-subtext">
                 <span>
@@ -66,20 +63,20 @@ export default function PostInfo({ data }) {
                   {new Date(post.publishDate).toLocaleDateString()}
                 </span>
               </div>
-
-              {post.tags.length > 0 && (
-                <div className="tagbar">
-                  {post.tags.map((tags, index) => (
-                    <p key={index}>{tags}</p>
-                  ))}
-                </div>
-              )}
-
-              <p>{post.text}</p>
             </div>
+            {post.tags.length > 0 && (
+              <div className="tagbar">
+                {post.tags.map((tags, index) => (
+                  <p key={index}>{tags}</p>
+                ))}
+              </div>
+            )}
+
+            <p>{post.text}</p>
           </div>
-        ))}
-      </div>
+          <img className="post-image" src={post.image} alt="post" />
+        </div>
+      ))}
 
       <div style={{ display, textAlign: "center" }}>
         <button onClick={() => window.scrollTo(0, 0)} className="top">
