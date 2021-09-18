@@ -2,40 +2,39 @@ import "./PostInfo.css";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import { Posts } from "../../interface/Posts";
 import { useEffect, useState } from "react";
+import React from "react";
 
-export default function PostInfo({ data }) {
+function PostInfo({ data }) {
   const [posts, setPosts] = useState<Posts[]>([]);
   const [display, setDisplay] = useState("block");
   const [loading, setLoading] = useState(false);
 
   // Lazy loading starts here
   useEffect(() => {
+    window.addEventListener("scroll", handleLazy);
+    return () => window.removeEventListener("scroll", handleLazy);
+  }, []);
+
+  useEffect(() => {
     setPosts(data.slice(0, 10));
   }, [data]);
 
   useEffect(() => {
-    document.body.clientHeight - 50 < window.innerHeight
-      ? setDisplay("none")
-      : setDisplay("block");
-    if (posts.length < 50) {
-      window.addEventListener("scroll", handleLazy);
-    }
-    return () => window.removeEventListener("scroll", handleLazy);
-  }, [posts.length]);
-
-  useEffect(() => {
     if (!loading) return;
-    const newPosts = [...posts, ...data.slice(posts.length, 10 + posts.length)];
-    setPosts(newPosts);
+    setPosts(prev => {
+      return [...prev, ...data.slice(prev.length, 10 + prev.length)];
+    });
     setLoading(false);
-  }, [loading, data, posts]);
+  }, [loading, data]);
 
   function handleLazy() {
+    !window.scrollY ? setDisplay("none") : setDisplay("block");
     if (
       window.innerHeight + window.pageYOffset + 100 <
       document.documentElement.offsetHeight
     )
-      setLoading(true);
+      return;
+    setLoading(true);
   }
 
   // If no posts exist we display no results.
@@ -78,7 +77,7 @@ export default function PostInfo({ data }) {
         </div>
       ))}
 
-      <div style={{ display, textAlign: "center" }}>
+      <div style={{ display }} className="scroll-top">
         <button onClick={() => window.scrollTo(0, 0)} className="top">
           <i className="bx bxs-chevrons-up"></i>
         </button>
@@ -86,3 +85,5 @@ export default function PostInfo({ data }) {
     </>
   );
 }
+
+export default React.memo(PostInfo);

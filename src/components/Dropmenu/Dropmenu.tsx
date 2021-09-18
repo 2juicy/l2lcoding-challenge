@@ -1,3 +1,4 @@
+import React from "react";
 import "./Dropmenu.css";
 
 interface PropTypes {
@@ -7,12 +8,7 @@ interface PropTypes {
   setParams: any;
 }
 
-export default function Dropmenu({
-  label,
-  params,
-  contents,
-  setParams,
-}: PropTypes) {
+function Dropmenu({ label, params, contents, setParams }: PropTypes) {
   return (
     <div className={`dropdown ${label}`}>
       <button className="dropbtn">{label}</button>
@@ -40,3 +36,5 @@ export default function Dropmenu({
     </div>
   );
 }
+
+export default React.memo(Dropmenu);
