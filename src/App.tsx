@@ -14,11 +14,11 @@ export default function App() {
   const [query, setQuery] = useState("");
   const filters = ["owner", "text", "tags"];
   const [likes, setLikes] = useState(0);
-  const [searchParams, setSearchParams] = useState(["owner"]);
+  const [searchParams, setSearchParams] = useState(["owner", "text", "tags"]);
   const [tags, setTags] = useState([]);
-  const [tagsParam, setTagsParam] = useState([]);
+  const [tagsParam, setTagsParam] = useState<string[]>([]);
   const [owners, setOwners] = useState([]);
-  const [ownersParam, setOwnersParam] = useState([]);
+  const [ownersParam, setOwnersParam] = useState<string[]>([]);
 
   useEffect(() => {
     fetchData(URL, APP_ID).then(data => {
@@ -36,19 +36,31 @@ export default function App() {
   }, []);
 
   function handleSearch(text?: string) {
-    // Guard clause
-    if (!text && !likes) return data;
-    // 1st filter by likes
-    const filterByLikes = data.filter(post => {
-      return post.likes >= likes;
-    });
-    // 2nd Guard Clause because TypeScript is strict
-    if (!text) return filterByLikes;
-
     // We use this function to see a substring or string exists in target string.
     function hasWord(target: string, query: string) {
       return target.toLowerCase().indexOf(query.toLowerCase()) > -1;
     }
+
+    // Guard clause to check if any likes or text
+    if (!text && !likes && !tagsParam.length && !ownersParam.length)
+      return data;
+
+    const filterByTags = data.filter(post =>
+      post.tags.some(tag => (tagsParam.length ? tagsParam.includes(tag) : data))
+    );
+
+    const filterByOwner = filterByTags.filter(post => {
+      const owner = `${post.owner.firstName} ${post.owner.lastName}`;
+      return ownersParam.length ? ownersParam.includes(owner) : filterByTags;
+    });
+
+    // 1st filter by likes if likes
+    const filterByLikes = filterByOwner.filter(post => {
+      return post.likes >= likes;
+    });
+
+    // Guard clause for the search
+    if (!text) return filterByLikes;
 
     // Filtering happens here by checking the variable type then filter accordingly
     return filterByLikes.filter((post: Posts) =>
