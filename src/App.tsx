@@ -13,8 +13,8 @@ export default function App() {
   const [data, setData] = useState<Posts[]>([]);
   const [query, setQuery] = useState("");
   const filters = ["owner", "text", "tags"];
-  const [likes, setLikes] = useState(0);
   const [searchParams, setSearchParams] = useState(["owner", "text", "tags"]);
+  const [likes, setLikes] = useState(0);
   const [tags, setTags] = useState([]);
   const [tagsParam, setTagsParam] = useState<string[]>([]);
   const [owners, setOwners] = useState([]);
@@ -60,7 +60,7 @@ export default function App() {
     });
 
     // Guard clause for the search
-    if (!text) return filterByLikes;
+    if (!text || !searchParams?.length) return filterByLikes;
 
     // Filtering happens here by checking the variable type then filter accordingly
     return filterByLikes.filter((post: Posts) =>
@@ -97,9 +97,10 @@ export default function App() {
       <Navbar>
         <div className="filters">
           <button className="clear" onClick={clearAll}>
-            Clear
+            clear
           </button>
           <input
+            autoFocus
             className="searchbar"
             type="search"
             value={query}
@@ -109,24 +110,28 @@ export default function App() {
 
           <div className="searchmenu">
             {filters.map(filter => (
-              <label key={filter}>
-                <input
-                  type="checkbox"
-                  checked={searchParams.includes(filter)}
-                  onChange={() => {
-                    const check = searchParams.includes(filter);
-                    setSearchParams(prev =>
-                      check
-                        ? prev.filter(param => param !== filter)
-                        : [...prev, filter]
-                    );
-                  }}
-                />
-                {filter}
-              </label>
+              <div key={filter}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={searchParams.includes(filter)}
+                    onChange={() => {
+                      const check = searchParams.includes(filter);
+                      setSearchParams(prev =>
+                        check
+                          ? prev.filter(param => param !== filter)
+                          : [...prev, filter]
+                      );
+                    }}
+                  />
+                  {filter}
+                </label>
+              </div>
             ))}
           </div>
+        </div>
 
+        <div>
           <Dropmenu
             label="owners"
             params={ownersParam}

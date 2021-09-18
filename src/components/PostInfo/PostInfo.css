@@ -1,21 +1,15 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-bottom: 25px;
-}
-
 .flex-container {
+  width: 768px;
   display: flex;
-  flex-direction: column;
+  margin: auto;
+  justify-content: space-between;
+  flex-direction: row;
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.flex-container:nth-child(odd) {
-  margin: 0 0 0 5px;
-}
-
-.flex-container:nth-child(even) {
-  margin: 0 5px 0 0;
+.post-container {
+  width: 300px;
+  padding: 0 0 0 10px;
 }
 
 .owner {
@@ -27,9 +21,6 @@
   font-size: 22px;
   font-weight: 700;
 }
-.post-info {
-  margin-left: 15px;
-}
 
 .post-info > div {
   display: flex;
@@ -38,7 +29,7 @@
 
 .post-image {
   object-fit: contain;
-  max-width: 100%;
+  max-width: 460px;
   height: 300px;
 }
 

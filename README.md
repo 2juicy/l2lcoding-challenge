@@ -18,20 +18,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## `Overview:`
 
-- [ ] Build a React UI interface that closely resembles the Search & Filter UI of this site: https://plexuss.com
+- [x] Build a React UI interface that closely resembles the Search & Filter UI of this site: https://plexuss.com
 
-- [ ] The UI should properly manipulate rendered data of the Post model from this dummy data api: https://dummyapi.io/docs/models
+- [x] The UI should properly manipulate rendered data of the Post model from this dummy data api: https://dummyapi.io/docs/models
 
 Feel free to use React-based design and UI libraries to rapidly prototype.
 Be ready to discuss why you chose them.
 
 ## `UI should include:`
 
-- [ ] A Single Text Search Input that filters table for any matching text across Owner, Text, Tags data
-- [ ] Simple dropdown menus
-- [ ] A slider UI to filter for minimum # of Likes
-- [ ] Selectable Filter for owner (multi-select - button/checkbox/radio/select input)
-- [ ] Selectable Filter for tags (multi-select - button/checkbox/radio/select input)
+- [x] A Single Text Search Input that filters table for any matching text across Owner, Text, Tags data
+- [x] Simple dropdown menus
+- [x] A slider UI to filter for minimum # of Likes
+- [x] Selectable Filter for owner (multi-select - button/checkbox/radio/select input)
+- [x] Selectable Filter for tags (multi-select - button/checkbox/radio/select input)
 
 All filters including the Search input’s string match should be additive.
 
@@ -46,10 +46,10 @@ NOTE: The order that a user selects filters should not matter
 
 ## `Bonus`
 
-- [ ] Show off UX design capabilities
-- [ ] Lazy load data below view screen on scroll
-- [ ] Clear All Filters Btn
-- [ ] Optimize code or be ready to discuss Optimization improvements you would make if allowed more time.
-- [ ] Launch mini-app on live URL
+- [x] Show off UX design capabilities
+- [x] Lazy load data below view screen on scroll
+- [x] Clear All Filters Btn
+- [x] Optimize code or be ready to discuss Optimization improvements you would make if allowed more time.
+- [x] Launch mini-app on live URL
 
 </details>
