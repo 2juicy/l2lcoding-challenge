@@ -97,7 +97,7 @@ export default function App() {
       <Navbar>
         <div className="filters">
           <button className="clear" onClick={clearAll}>
-            Clear
+            clear
           </button>
           <input
             autoFocus
@@ -110,21 +110,23 @@ export default function App() {
 
           <div className="searchmenu">
             {filters.map(filter => (
-              <label key={filter}>
-                <input
-                  type="checkbox"
-                  checked={searchParams.includes(filter)}
-                  onChange={() => {
-                    const check = searchParams.includes(filter);
-                    setSearchParams(prev =>
-                      check
-                        ? prev.filter(param => param !== filter)
-                        : [...prev, filter]
-                    );
-                  }}
-                />
-                {filter}
-              </label>
+              <div key={filter}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={searchParams.includes(filter)}
+                    onChange={() => {
+                      const check = searchParams.includes(filter);
+                      setSearchParams(prev =>
+                        check
+                          ? prev.filter(param => param !== filter)
+                          : [...prev, filter]
+                      );
+                    }}
+                  />
+                  {filter}
+                </label>
+              </div>
             ))}
           </div>
         </div>
