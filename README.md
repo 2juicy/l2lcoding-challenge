@@ -18,9 +18,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## `Overview:`
 
-- [ ] Build a React UI interface that closely resembles the Search & Filter UI of this site: https://plexuss.com
+- [x] Build a React UI interface that closely resembles the Search & Filter UI of this site: https://plexuss.com
 
-- [ ] The UI should properly manipulate rendered data of the Post model from this dummy data api: https://dummyapi.io/docs/models
+- [x] The UI should properly manipulate rendered data of the Post model from this dummy data api: https://dummyapi.io/docs/models
 
 Feel free to use React-based design and UI libraries to rapidly prototype.
 Be ready to discuss why you chose them.
