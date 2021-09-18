@@ -86,7 +86,6 @@ export default function App() {
   }
 
   function clearAll() {
-    setSearchParams([]);
     setTagsParam([]);
     setOwnersParam([]);
     setQuery("");
