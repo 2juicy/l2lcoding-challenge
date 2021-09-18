@@ -16,6 +16,7 @@ export default function Range({ slider, setSlider }: PropTypes) {
 
   return (
     <div className="range-wrap">
+      Likes
       <input
         className="range"
         onBlur={() => setShow("")}

@@ -1,13 +1,15 @@
 .range-wrap {
+  color: #fff;
+  display: flex;
   position: relative;
-  margin: 0 0;
+  margin: 0 15px 0 0;
 }
 .range {
   width: 100%;
 }
 .bubble {
   opacity: 0;
-  background: #363c3c;
+  background: #000;
   color: #fff;
   padding: 2px 4px;
   position: absolute;

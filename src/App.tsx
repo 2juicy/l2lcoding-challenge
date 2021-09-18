@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { fetchData } from "./util";
 import { Posts } from "./interface/Posts";
-import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
 import PostInfo from "./components/PostInfo/PostInfo";
 import RangeSlider from "./components/RangeSlider/RangeSlider";
+import Dropmenu from "./components/Dropmenu/Dropmenu";
 
 export default function App() {
   const URL = "https://dummyapi.io/data/v1/post?limit=50";
@@ -14,10 +15,23 @@ export default function App() {
   const filters = ["owner", "text", "tags"];
   const [likes, setLikes] = useState(0);
   const [searchParams, setSearchParams] = useState(["owner"]);
+  const [tags, setTags] = useState([]);
+  const [tagsParam, setTagsParam] = useState([]);
+  const [owners, setOwners] = useState([]);
+  const [ownersParam, setOwnersParam] = useState([]);
 
   useEffect(() => {
     fetchData(URL, APP_ID).then(data => {
+      console.log(data.data);
       setData(data.data);
+      let tags = data.data.map(data => data.tags.map(tag => tag));
+      tags = [...new Set(tags.flat(Infinity))];
+      setTags(tags);
+      let owners = data.data.map(
+        data => `${data.owner.firstName} ${data.owner.lastName}`
+      );
+      owners = [...new Set(owners)];
+      setOwners(owners);
     });
   }, []);
 
@@ -61,14 +75,19 @@ export default function App() {
 
   function clearAll() {
     setSearchParams([]);
+    setTagsParam([]);
+    setOwnersParam([]);
     setQuery("");
     setLikes(0);
   }
 
   return (
     <div>
-      <Header>
+      <Navbar>
         <div className="filters">
+          <button className="clear" onClick={clearAll}>
+            Clear
+          </button>
           <input
             className="searchbar"
             type="search"
@@ -76,9 +95,8 @@ export default function App() {
             placeholder={`Search by ${searchParams.join(", ")}.`}
             onChange={e => setQuery(e.target.value)}
           />
-          <div className="dropmenu">
-            <RangeSlider slider={likes} setSlider={setLikes} />
 
+          <div className="searchmenu">
             {filters.map(filter => (
               <label key={filter}>
                 <input
@@ -97,12 +115,23 @@ export default function App() {
               </label>
             ))}
           </div>
+
+          <Dropmenu
+            label="owners"
+            params={ownersParam}
+            contents={owners}
+            setParams={setOwnersParam}
+          />
+          <Dropmenu
+            label="tags"
+            params={tagsParam}
+            contents={tags}
+            setParams={setTagsParam}
+          />
         </div>
 
-        <button className="clear" onClick={clearAll}>
-          Clear
-        </button>
-      </Header>
+        <RangeSlider slider={likes} setSlider={setLikes} />
+      </Navbar>
 
       <PostInfo data={handleSearch(query)} />
     </div>
