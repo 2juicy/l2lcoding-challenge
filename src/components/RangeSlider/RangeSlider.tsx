@@ -16,12 +16,13 @@ function Range({ slider, setSlider }: PropTypes) {
 
   return (
     <div className="range-wrap">
-      Likes
+      <label htmlFor="likes">Likes</label>
       <input
+        id="likes"
+        name="likes"
+        type="range"
         className="range"
         onBlur={() => setShow("")}
-        type="range"
-        name="likes"
         min="0"
         max="500"
         value={slider}

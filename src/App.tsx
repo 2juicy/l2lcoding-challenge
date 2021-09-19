@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import "./App.css";
 import { fetchData } from "./util";
 import { Posts } from "./interface/Posts";
 import Navbar from "./components/Navbar/Navbar";
-import PostInfo from "./components/PostInfo/PostInfo";
 import RangeSlider from "./components/RangeSlider/RangeSlider";
 import Dropmenu from "./components/Dropmenu/Dropmenu";
+const PostInfo = lazy(() => import("./components/PostInfo/PostInfo"));
 
 export default function App() {
   const URL = "https://dummyapi.io/data/v1/post?limit=50";
@@ -22,7 +22,6 @@ export default function App() {
 
   useEffect(() => {
     fetchData(URL, APP_ID).then(data => {
-      console.log(data.data);
       setData(data.data);
       let tags = data.data.map(data => data.tags.map(tag => tag));
       tags = [...new Set(tags.flat(Infinity))];
@@ -41,7 +40,7 @@ export default function App() {
       return target.toLowerCase().indexOf(query.toLowerCase()) > -1;
     }
 
-    // Guard clause to check if any likes or text
+    // Guard clause to check if any search parameter exists.
     if (!text && !likes && !tagsParam.length && !ownersParam.length)
       return data;
 
@@ -149,7 +148,9 @@ export default function App() {
         <RangeSlider slider={likes} setSlider={setLikes} />
       </Navbar>
 
-      <PostInfo data={handleSearch(query)} />
+      <Suspense fallback={<h2 style={{ textAlign: "center" }}>Loading...</h2>}>
+        <PostInfo data={handleSearch(query)} />
+      </Suspense>
     </div>
   );
 }
