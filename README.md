@@ -1,3 +1,6 @@
+Coding challenge for [Link to Learn](https://linktolearn.org/)
+###### Completed on Friday, September 17, 2021 08:01 PM (PDT)
+
 ## `Quick start`
 
 In the project directory terminal, you can run:
@@ -50,6 +53,6 @@ NOTE: The order that a user selects filters should not matter
 - [x] Lazy load data below view screen on scroll
 - [x] Clear All Filters Btn
 - [x] Optimize code or be ready to discuss Optimization improvements you would make if allowed more time.
-- [x] Launch mini-app on live URL
+- [x] Launch mini-app on [live URL](https://2juicy.github.io/l2lcoding-challenge/)
 
 </details>
