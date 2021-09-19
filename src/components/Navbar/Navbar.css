@@ -14,3 +14,10 @@
   text-decoration: none;
   margin: 0 auto 0 25px;
 }
+
+@media only screen and (max-width: 675px) {
+  #header-component {
+    height: auto;
+    flex-direction: column;
+  }
+}

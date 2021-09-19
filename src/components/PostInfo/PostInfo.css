@@ -95,3 +95,9 @@
 .top:hover::before {
   height: 180%;
 }
+
+@media only screen and (max-width: 767px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
