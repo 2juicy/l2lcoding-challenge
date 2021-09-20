@@ -53,7 +53,6 @@ export default function App() {
       return ownersParam.length ? ownersParam.includes(owner) : filterByTags;
     });
 
-    // 1st filter by likes if likes
     const filterByLikes = filterByOwner.filter(post => {
       return post.likes >= likes;
     });
