@@ -53,9 +53,9 @@ body {
   z-index: 1;
 }
 
-.filters:hover .searchmenu,
+.searchbar:hover + .searchmenu,
 .searchbar:focus + .searchmenu {
-  animation: slide-down 0.5s ease-out;
+  animation: slide-down 1.1s ease-out;
   display: block;
 }
 
