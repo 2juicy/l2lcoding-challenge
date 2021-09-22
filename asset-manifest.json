@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/l2lcoding-challenge/static/css/main.61d9fcf6.chunk.css",
-    "main.js": "/l2lcoding-challenge/static/js/main.5fe295f5.chunk.js",
-    "main.js.map": "/l2lcoding-challenge/static/js/main.5fe295f5.chunk.js.map",
+    "main.css": "/l2lcoding-challenge/static/css/main.3a5a2a34.chunk.css",
+    "main.js": "/l2lcoding-challenge/static/js/main.0ddb9ba5.chunk.js",
+    "main.js.map": "/l2lcoding-challenge/static/js/main.0ddb9ba5.chunk.js.map",
     "runtime-main.js": "/l2lcoding-challenge/static/js/runtime-main.86be1128.js",
     "runtime-main.js.map": "/l2lcoding-challenge/static/js/runtime-main.86be1128.js.map",
     "static/js/2.202a600f.chunk.js": "/l2lcoding-challenge/static/js/2.202a600f.chunk.js",
@@ -12,13 +12,13 @@
     "static/js/3.cae46cc2.chunk.js.map": "/l2lcoding-challenge/static/js/3.cae46cc2.chunk.js.map",
     "index.html": "/l2lcoding-challenge/index.html",
     "static/css/3.a1bcc724.chunk.css.map": "/l2lcoding-challenge/static/css/3.a1bcc724.chunk.css.map",
-    "static/css/main.61d9fcf6.chunk.css.map": "/l2lcoding-challenge/static/css/main.61d9fcf6.chunk.css.map",
+    "static/css/main.3a5a2a34.chunk.css.map": "/l2lcoding-challenge/static/css/main.3a5a2a34.chunk.css.map",
     "static/js/2.202a600f.chunk.js.LICENSE.txt": "/l2lcoding-challenge/static/js/2.202a600f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.86be1128.js",
     "static/js/2.202a600f.chunk.js",
-    "static/css/main.61d9fcf6.chunk.css",
-    "static/js/main.5fe295f5.chunk.js"
+    "static/css/main.3a5a2a34.chunk.css",
+    "static/js/main.0ddb9ba5.chunk.js"
   ]
 }
