@@ -29,7 +29,7 @@
 }
 
 .dropdown:hover .dropdown-content {
-  animation: slide-down 0.5s ease-out;
+  animation: roll-down 0.5s ease-out;
   display: block;
 }
 
