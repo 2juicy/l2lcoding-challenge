@@ -55,7 +55,8 @@ body {
 
 .searchbar:hover + .searchmenu,
 .searchbar:focus + .searchmenu {
-  animation: roll-down 1.1s ease-out;
+  animation: roll-down 0.3s ease-out;
+  transform-origin: top;
   display: block;
 }
 
@@ -79,12 +80,13 @@ body {
 @keyframes roll-down {
   0% {
     opacity: 0;
-    overflow: hidden;
-    max-height: 0;
+    transition: transform 0.5s;
+    transform-origin: top;
+    transform: scaleY(0);
   }
   100% {
     opacity: 1;
-    max-height: 100vh;
+    transform: scaleY(1);
   }
 }
 
