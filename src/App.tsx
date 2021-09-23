@@ -95,7 +95,7 @@ export default function App() {
       <Navbar>
         <div className="filters">
           <button className="clear" onClick={clearAll}>
-            <p className="pulse">clear</p>
+            clear
           </button>
           <input
             autoFocus
