@@ -5,7 +5,7 @@ interface PropTypes {
   label: string;
   params: string[];
   contents: string[];
-  setParams: any;
+  setParams: (prev) => void;
 }
 
 function Dropmenu({ label, params, contents, setParams }: PropTypes) {

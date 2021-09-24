@@ -97,35 +97,37 @@ export default function App() {
           <button className="clear" onClick={clearAll}>
             clear
           </button>
-          <input
-            autoFocus
-            className="searchbar"
-            type="search"
-            value={query}
-            placeholder={`Search by ${searchParams.join(", ")}.`}
-            onChange={e => setQuery(e.target.value)}
-          />
+          <div className="searchmenu-container">
+            <input
+              autoFocus
+              className="searchbar"
+              type="search"
+              value={query}
+              placeholder={`Search by ${searchParams.join(", ")}.`}
+              onChange={e => setQuery(e.target.value)}
+            />
 
-          <div className="searchmenu">
-            {filters.map(filter => (
-              <div key={filter}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={searchParams.includes(filter)}
-                    onChange={() => {
-                      const check = searchParams.includes(filter);
-                      setSearchParams(prev =>
-                        check
-                          ? prev.filter(param => param !== filter)
-                          : [...prev, filter]
-                      );
-                    }}
-                  />
-                  {filter}
-                </label>
-              </div>
-            ))}
+            <div className="searchmenu">
+              {filters.map(filter => (
+                <div key={filter}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={searchParams.includes(filter)}
+                      onChange={() => {
+                        const check = searchParams.includes(filter);
+                        setSearchParams(prev =>
+                          check
+                            ? prev.filter(param => param !== filter)
+                            : [...prev, filter]
+                        );
+                      }}
+                    />
+                    {filter}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
